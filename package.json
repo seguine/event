@@ -1,0 +1,12 @@
+{
+  "name"         : "event-crawler",
+  "version"      : "0.0.1",
+  "description"  : "crawle le web.",
+  "main"         : "app.js",
+  "author"       : "pat",
+  "dependencies" : {
+    "express"    : "latest",
+    "request"    : "latest",
+    "cheerio"    : "latest"
+  }
+}
