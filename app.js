@@ -1,4 +1,5 @@
 var express = require('express');
+var path = require('path');
 var fs = require('fs');
 var request = require('request');
 var cheerio = require('cheerio');
@@ -22,7 +23,8 @@ evenements = [
 ]
 
 app.get('/', function(req, res){
-    text = "Liste d'evenements:<br>"
+    text = "<img src=\"/static/cat.jpg\"><br>"
+    text += "Liste d'evenements:<br>"
     text += "<table>"
     for (i = 0; i < evenements.length; i++) {
         text += "<tr>" + "<td><b>" + evenements[i].date + "</b></td>"
@@ -31,6 +33,8 @@ app.get('/', function(req, res){
     text += "</table>"
     res.send(text)
 })
+
+app.use('/static', express.static(path.join(__dirname, 'static')))
 
 app.listen('8081')
 
