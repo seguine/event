@@ -1,7 +1,8 @@
 var express = require('express');
 var path = require('path');
 var fs = require('fs');
-var request = require('request');
+//var request = require('request');
+var request = require('superagent');//tiré d'un exemple du cour
 var cheerio = require('cheerio');
 var app     = express();
 
