@@ -1,10 +1,11 @@
 var express = require('express');
 var path = require('path');
 var fs = require('fs');
-//var request = require('request');
-var request = require('superagent');//tiré d'un exemple du cour
+var request = require('request');
 var cheerio = require('cheerio');
-var app     = express();
+var app = express();
+
+const PORT = 8081;
 
 evenements = [
     {
@@ -35,10 +36,33 @@ app.get('/', function(req, res){
     res.send(text)
 })
 
-app.use('/static', express.static(path.join(__dirname, 'static')))
+app.get('/events', function(req, res){
 
-app.listen('8081')
+  url = "http://www.algonquinsa.com/event/free-movie-night-moonlight/";
 
-console.log('server a http://localhost:8081');
+  request(url, function(error, response, html){
+
+        // First we'll check to make sure no errors occurred when making the request
+
+        if(!error){
+            // Next, we'll utilize the cheerio library on the returned html which will essentially give us jQuery functionality
+
+            var $ = cheerio.load(html);
+
+            var json;
+
+            json = JSON.parse($('script[type="application/ld+json"]').html());
+            json = json[0];
+
+            res.send(json.location.address);
+          }
+        });
+      });
+
+//app.use('/static', express.static(path.join(__dirname, 'static')))
+
+app.listen(PORT);
+
+console.log('server a http://localhost:'+PORT);
 
 exports = module.exports = app;
