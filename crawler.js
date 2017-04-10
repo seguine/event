@@ -6,9 +6,15 @@ var cheerio = require('cheerio');
 var URL = require('url-parse');
 var app = express();
 
-const PORT = 8081;
+/* 1-Le crawler cherche pour un terme dans le code html.
+  2- Cheche pour tous les liens href et les insèrent dans pagesToVisit
+  3- Visite tous les liens et cherche pour le terme
+*/
 
+
+//URL de départ. On pourra créer un tableau avec plusieurs autres sites plus tard
 var START_URL = "http://www.algonquinsa.com";
+//J'ai juste chercher toutes les balises qui sont des schemas
 var SEARCH_WORD = 'script[type="application/ld+json"]';
 //var SEARCH_WORD = '"@type": "Event"';
 var MAX_PAGES_TO_VISIT = 100;
