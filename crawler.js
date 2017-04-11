@@ -16,7 +16,7 @@ var app = express();
 var START_URL = "http://www.algonquinsa.com";
 //J'ai juste chercher toutes les balises qui sont des schemas
 var SEARCH_WORD = 'script[type="application/ld+json"]';
-//var SEARCH_WORD = '"@type": "Event"';
+//var SEARCH_WORD = "'@type': 'Event'";
 var MAX_PAGES_TO_VISIT = 100;
 
 var pagesVisited = {};
@@ -25,6 +25,8 @@ var found = 0;
 var pagesToVisit = [];
 var url = new URL(START_URL);
 var baseUrl = url.protocol + "//" + url.hostname;
+
+var json;
 
 pagesToVisit.push(START_URL);
 crawl();
@@ -64,6 +66,29 @@ function visitPage(url, callback) {
      if(isWordFound) {
        console.log('Word ' + SEARCH_WORD + ' found at page ' + url);
        console.log('Found count: ' + found);
+
+       var jsontemp = JSON.parse($(SEARCH_WORD).html());
+
+       function isArray(ob) {
+         return ob.constructor === Array;
+       }
+
+
+       if (isArray(jsontemp){
+         if (jsontemp[0]["@type"] == "event") {
+           console.log(jsontemp[0]);
+           json.push(jsontemp[0]);
+         } else {
+
+         if(jsontemp["@type"] == "event"){
+           console.log(jsontemp);
+           json.push(jsontemp);
+       } else {
+           console.log("non-compatible");
+         }
+       }
+     }
+
        collectInternalLinks($);
        callback();
      } else {
