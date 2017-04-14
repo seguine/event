@@ -17,7 +17,7 @@ var START_URL = "http://www.algonquinsa.com";
 //J'ai juste chercher toutes les balises qui sont des schemas
 var SEARCH_WORD = 'script[type="application/ld+json"]';
 //var SEARCH_WORD = "'@type': 'Event'";
-var MAX_PAGES_TO_VISIT = 100;
+var MAX_PAGES_TO_VISIT = 25;
 
 var pagesVisited = {};
 var numPagesVisited = 0;
@@ -26,7 +26,7 @@ var pagesToVisit = [];
 var url = new URL(START_URL);
 var baseUrl = url.protocol + "//" + url.hostname;
 
-var json;
+var json = {"event": []};
 
 pagesToVisit.push(START_URL);
 crawl();
@@ -34,6 +34,7 @@ crawl();
 function crawl() {
   if(numPagesVisited >= MAX_PAGES_TO_VISIT) {
     console.log("Reached max limit of number of pages to visit.");
+    writeFile(json);
     return;
   }
   var nextPage = pagesToVisit.pop();
@@ -66,28 +67,28 @@ function visitPage(url, callback) {
      if(isWordFound) {
        console.log('Word ' + SEARCH_WORD + ' found at page ' + url);
        console.log('Found count: ' + found);
+       //console.log($(SEARCH_WORD).text());
 
-       var jsontemp = JSON.parse($(SEARCH_WORD).html());
+       var jsontemp = JSON.parse($(SEARCH_WORD).text());
 
        function isArray(ob) {
          return ob.constructor === Array;
        }
 
-
-       if (isArray(jsontemp){
-         if (jsontemp[0]["@type"] == "event") {
-           console.log(jsontemp[0]);
-           json.push(jsontemp[0]);
+       //Vérifier si l'élement DOM est un schema de type "Event"
+       if (isArray(jsontemp)){
+         //Si l'objet retourné est un Array on vérifie si c'Est un event
+         if (jsontemp[0]["@type"] == "Event") {
+           json.event.push(jsontemp[0]);
          } else {
+           console.log("not event");
+         }
+       } else if(jsontemp["@type"] == "Event"){
 
-         if(jsontemp["@type"] == "event"){
-           console.log(jsontemp);
-           json.push(jsontemp);
+           json.event.push(jsontemp);
        } else {
            console.log("non-compatible");
          }
-       }
-     }
 
        collectInternalLinks($);
        callback();
@@ -106,7 +107,7 @@ function visitPage(url, callback) {
 
 function searchForWord($, word) {
 
-  if ($(word).length !== -1){
+  if ($(word).length !== -1 && $(word).text() !== "") {
     found++;
     return true;
   }
@@ -138,4 +139,13 @@ function collectInternalLinks($) {
 
   console.log("Found " + allRelativeLinks.length + " relative links");
   console.log("Found " + allAbsoluteLinks.length + " absolute links");
+}
+
+var writeFile = function(json){
+
+fs.writeFile('eventlist.json',"var liste = " + JSON.stringify(json) , function (err) {
+    if (err)
+        return console.log(err);
+    console.log('json > eventlist.json');
+});
 }
