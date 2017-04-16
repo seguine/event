@@ -7,23 +7,6 @@ var app = express();
 
 const PORT = 8081;
 
-evenements = [
-    {
-        nom: "poisson d'avril",
-        date: "2017/04/01",
-        categorie: "fete",
-        descriptions: "on fait des farces",
-        lien: "http://www.poisson.com",
-    },
-    {
-        nom: "noel",
-        date: "2017/12/25",
-        categorie: "fete",
-        descriptions: "j'mange dla tourtiere",
-        lien: "http://www.noel.com"
-    },
-]
-
 app.get('/', function(req, res){
   res.sendFile(__dirname+"/index.html");
     /*text = '<script src="muse_manifest.xml"></script>';
@@ -45,25 +28,7 @@ app.get('/', function(req, res){
 
 app.get('/events', function(req, res){
 
-  url = "http://www.algonquinsa.com/event/free-movie-night-moonlight/";
-
-  request(url, function(error, response, html){
-
-        // First we'll check to make sure no errors occurred when making the request
-
-        if(!error){
-            // Next, we'll utilize the cheerio library on the returned html which will essentially give us jQuery functionality
-
-            var $ = cheerio.load(html);
-
-            var json;
-
-            json = JSON.parse($('script[type="application/ld+json"]').html());
-            json = json[0];
-
-            res.send(json.location.address);
-          }
-        });
+  res.sendFile(__dirname+"/events.html");
       });
 
 app.use('/static', express.static(path.join(__dirname, 'static')));
