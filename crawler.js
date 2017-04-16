@@ -14,32 +14,37 @@ var app = express();
 //J'ai juste chercher toutes les balises qui sont des schemas
 var SCHEMA = 'script[type="application/ld+json"]';
 var SEARCH_WORD = "Event";
-var MAX_PAGES_TO_VISIT = 30;
+var MAX_PAGES_TO_VISIT = 5;
 var SITELIST = [
-  "http://www.algonquinsa.com/event",
+  //"http://www.algonquinsa.com/event",
   "http://www.ottawa2017.ca/events",
   "https://nac-cna.ca/en/event",
   "https://www.tdplace.ca/event"
 ];
 var found = 0;
 var pagesVisited = {};
-var numPagesVisited = 0;
 var json = {"event": []};
-var START_URL = SITELIST.shift();
-
 var pagesToVisit = [];
-var url = new URL(START_URL);
-var baseUrl = url.protocol + "//" + url.hostname;
+//var url;
+//var baseUrl;
 
-pagesToVisit.push(START_URL);
+var prepareUrl = function(){
+  pagesToVisit = [];
+  START_URL = SITELIST.shift();
+  pagesToVisit.push(START_URL);
+  numPagesVisited = 0;
+  //url = new URL(START_URL);
+  //baseUrl = url.protocol + "//" + url.hostname;
+}
+prepareUrl();
 crawl();
 
 function crawl() {
   if(numPagesVisited >= MAX_PAGES_TO_VISIT) {
     console.log("Reached max limit of number of pages to visit.");
     if (SITELIST.length > 0){
-    pagesToVisit.push(SITELIST.shift());
-    numPagesVisited = 0;
+    prepareUrl();
+
   } else {
     writeFile(json);
     return;
@@ -56,9 +61,17 @@ function crawl() {
 }
 
 function visitPage(url, callback) {
+
+  if (url === undefined){
+    console.log("url undefined")
+    callback();
+    return;
+  }
+
   // Add page to our set
   pagesVisited[url] = true;
   numPagesVisited++;
+
 
   // Make the request
   console.log("Visiting page " + url);

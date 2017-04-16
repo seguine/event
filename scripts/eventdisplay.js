@@ -2,6 +2,8 @@
 var elist = liste.event;
 
 for (e in elist){
+
+try {
   var html =
   "<div id='name'>"+elist[e]['name']+"</div>"+
   "<div id='image'><img src="+elist[e]['image']+" width='150px'></div>"+
@@ -16,4 +18,7 @@ for (e in elist){
   "<div id='lien'><a href="+elist[e]['url']+">Infos</a></div>";
 
   $('#res').append(html);
+
+} catch(err)
+
 }
