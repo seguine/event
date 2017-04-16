@@ -2,6 +2,7 @@ var express = require('express');
 var path = require('path');
 var fs = require('fs');
 var request = require('request');
+var url = require('url');
 var cheerio = require('cheerio');
 var app = express();
 
@@ -27,7 +28,7 @@ app.get('/', function(req, res){
 })
 
 app.get('/events', function(req, res){
-
+  console.log("request for events.html");
   res.sendFile(__dirname+"/events.html");
       });
 
@@ -35,6 +36,7 @@ app.use('/static', express.static(path.join(__dirname, 'static')));
 app.use('/images', express.static(path.join(__dirname, 'images')));
 app.use('/css', express.static(path.join(__dirname, 'css')));
 app.use('/scripts', express.static(path.join(__dirname, 'scripts')));
+app.use('/json', express.static(path.join(__dirname, 'json')));
 
 app.listen(PORT);
 

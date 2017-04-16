@@ -161,7 +161,7 @@ function collectInternalLinks($) {
 
 var writeFile = function(json){
 
-fs.writeFile('eventlist.json',"var liste = " + JSON.stringify(json) , function (err) {
+fs.writeFile('/json/eventlist.json',"var liste = " + JSON.stringify(json) , function (err) {
     if (err)
         return console.log(err);
     console.log('json > eventlist.json');
