@@ -14,7 +14,7 @@ var app = express();
 //J'ai juste chercher toutes les balises qui sont des schemas
 var SCHEMA = 'script[type="application/ld+json"]';
 var SEARCH_WORD = "Event";
-var MAX_PAGES_TO_VISIT = 5;
+var MAX_PAGES_TO_VISIT = 30;
 var SITELIST = [
   "http://www.algonquinsa.com/event",
   "http://www.ottawa2017.ca/events",
@@ -161,7 +161,7 @@ function collectInternalLinks($) {
 
 var writeFile = function(json){
 
-fs.writeFile('/json/eventlist.json',"var liste = " + JSON.stringify(json) , function (err) {
+fs.writeFile('json/eventlist.json',"var liste = " + JSON.stringify(json) , function (err) {
     if (err)
         return console.log(err);
     console.log('json > eventlist.json');
