@@ -19,6 +19,8 @@ try {
 
   $('#res').append(html);
 
-} catch(err)
+} catch(err) {
+
+}
 
 }
