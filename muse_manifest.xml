@@ -1,0 +1,97 @@
+<manifest alg="2" build="2017.0.2.363" opt="true" iceEnabled="true" iceMarkupVersion="2" iceEnabledOptions="link,responsive,cachebuster,textStyling" exportTarget="other" domain="index.com" resolutions="1x" timestamp="1492401509609">
+  <folder name="css">
+    <file name="site_global.css" crc="4122195779"/>
+    <file name="index.css" crc="466066192" ref="index"/>
+    <file name="event.css" crc="325397201" ref="event"/>
+  </folder>
+  <folder name="scripts">
+    <file name="jquery-1.8.3.min.js" crc="209076791" ref="index:event"/>
+    <file name="museutils.js" crc="4232573551" ref="index:event"/>
+    <file name="whatinput.js" crc="86476730" ref="index:event"/>
+    <file name="museconfig.js" crc="4152223963" ref="index:event"/>
+    <file name="jquery.watch.js" crc="3844535323" ref="index:event"/>
+    <file name="require.js" crc="4234670167" ref="index:event"/>
+  </folder>
+  <folder name="images">
+    <file name="canada-day-fireworks-ottawa-river-crop-u961.jpg" crc="4024656443" seo="true" ref="index">
+      <caption webpage="index" alt=""/>
+    </file>
+    <file name="u224-6.png" crc="392365549" ref="index"/>
+    <file name="u220-4.png" crc="95261143" ref="index"/>
+    <file name="blank.gif" crc="4208392903" ref="index"/>
+    <file name="u183_states.png" crc="145906703" ref="index"/>
+    <file name="u183_states-r.png" crc="3990436028" ref="index"/>
+    <file name="u205-6.png" crc="4019425447" ref="index"/>
+    <file name="canada-day-fireworks-ottawa-river-crop-u961-crop-u1386.jpg" crc="511251547" seo="true" ref="event">
+      <caption webpage="event" alt=""/>
+    </file>
+    <file name="u1388-6.png" crc="392365549" ref="event"/>
+    <file name="u1385-4.png" crc="95261143" ref="event"/>
+    <file name="u1382-4.png" crc="145906703" ref="event"/>
+    <file name="ottawahomelessperiod-socialsquare-crop-u1049.jpg" crc="3896361699" seo="true" ref="event:index">
+      <caption webpage="index" alt=""/>
+      <caption webpage="event" alt=""/>
+    </file>
+    <file name="u1389-4.png" crc="301783089" ref="event"/>
+    <file name="u1393-4.png" crc="4111918704" ref="event"/>
+    <file name="u1392-4.png" crc="3848639043" ref="event"/>
+    <file name="u1394-4.png" crc="3930605382" ref="event"/>
+    <file name="ncrcfe-croatoan-2017-fb-header-crop-u1141.jpg" crc="118173852" seo="true" ref="event:index">
+      <caption webpage="index" alt=""/>
+      <caption webpage="event" alt=""/>
+    </file>
+    <file name="u1396-4.png" crc="4285104543" ref="event"/>
+    <file name="u1400-4.png" crc="3953814694" ref="event"/>
+    <file name="u1399-4.png" crc="3993999982" ref="event"/>
+    <file name="u1401-4.png" crc="114129536" ref="event"/>
+    <file name="simple-plan-fb-header-crop-u1217.jpg" crc="332949550" seo="true" ref="event:index">
+      <caption webpage="index" alt=""/>
+      <caption webpage="event" alt=""/>
+    </file>
+    <file name="u1402-6.png" crc="292375124" ref="event"/>
+    <file name="u1406-4.png" crc="424164470" ref="event"/>
+    <file name="u1405-4.png" crc="350242774" ref="event"/>
+    <file name="u1407-4.png" crc="114129536" ref="event"/>
+    <file name="02-magicmen-fbcover-crop-u1287-crop-u1410.jpg" crc="78413784" seo="true" ref="event">
+      <caption webpage="event" alt=""/>
+    </file>
+    <file name="u1409-4.png" crc="347489416" ref="event"/>
+    <file name="u1413-4.png" crc="24790089" ref="event"/>
+    <file name="u1412-4.png" crc="4091576017" ref="event"/>
+    <file name="u1414-4.png" crc="114129536" ref="event"/>
+    <file name="practical-nursing-pinning-fb-header-crop-u1319.jpg" crc="4040729758" seo="true" ref="event:index">
+      <caption webpage="index" alt=""/>
+      <caption webpage="event" alt=""/>
+    </file>
+    <file name="u1415-4.png" crc="206617790" ref="event"/>
+    <file name="u1419-4.png" crc="182044885" ref="event"/>
+    <file name="u1418-4.png" crc="3818187127" ref="event"/>
+    <file name="u1420-4.png" crc="114129536" ref="event"/>
+    <file name="u1520-6.png" crc="4019425447" ref="event"/>
+    <file name="u1553-4.png" crc="301783089" ref="index"/>
+    <file name="u1557-4.png" crc="4111918704" ref="index"/>
+    <file name="u1556-4.png" crc="3848639043" ref="index"/>
+    <file name="u1558-4.png" crc="3930605382" ref="index"/>
+    <file name="u1559-4.png" crc="4285104543" ref="index"/>
+    <file name="u1563-4.png" crc="3953814694" ref="index"/>
+    <file name="u1562-4.png" crc="3993999982" ref="index"/>
+    <file name="u1564-4.png" crc="114129536" ref="index"/>
+    <file name="u1565-6.png" crc="292375124" ref="index"/>
+    <file name="u1569-4.png" crc="424164470" ref="index"/>
+    <file name="u1568-4.png" crc="350242774" ref="index"/>
+    <file name="u1570-4.png" crc="114129536" ref="index"/>
+    <file name="02-magicmen-fbcover-crop-u1287-crop-u1573.jpg" crc="78413784" seo="true" ref="index">
+      <caption webpage="index" alt=""/>
+    </file>
+    <file name="u1572-4.png" crc="347489416" ref="index"/>
+    <file name="u1576-4.png" crc="24790089" ref="index"/>
+    <file name="u1575-4.png" crc="4091576017" ref="index"/>
+    <file name="u1577-4.png" crc="114129536" ref="index"/>
+    <file name="u1578-4.png" crc="206617790" ref="index"/>
+    <file name="u1582-4.png" crc="182044885" ref="index"/>
+    <file name="u1581-4.png" crc="3818187127" ref="index"/>
+    <file name="u1583-4.png" crc="114129536" ref="index"/>
+  </folder>
+  <file name="index.html" crc="4151146287" seo="true" mt="1492401291871" redirect="true"/>
+  <file name="event.html" crc="251560914" seo="true" mt="1492398547833" redirect="true"/>
+</manifest>

@@ -9,7 +9,8 @@ var app = express();
 const PORT = 8081;
 
 app.get('/', function(req, res){
-  res.sendFile(__dirname+"/index.html");
+  res.sendFile(__dirname+"/index.html")
+
     /*text = '<script src="muse_manifest.xml"></script>';
     text += "<img src=\"/static/cat.jpg\"><br>";
     text += "<img src=\"/images/blank.gif\"><br>";
@@ -28,11 +29,20 @@ app.get('/', function(req, res){
 })
 
 app.get('/events', function(req, res){
-  console.log("request for events.html");
-  res.sendFile(__dirname+"/events.html");
-      });
+  console.log("request for events.html")
+    })
 
-app.use('/static', express.static(path.join(__dirname, 'static')));
+app.get('/', function(req, res){;
+
+  res.sendFile(__dirname+"/events.html")
+      })
+
+app.get('/', function(req, res){;
+
+  res.sendFile(__dirname+"/eventschema.html")
+            })
+
+//app.use('/static', express.static(path.join(__dirname, 'static')));
 app.use('/images', express.static(path.join(__dirname, 'images')));
 app.use('/css', express.static(path.join(__dirname, 'css')));
 app.use('/scripts', express.static(path.join(__dirname, 'scripts')));

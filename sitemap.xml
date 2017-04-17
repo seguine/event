@@ -1,15 +1,51 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9" xmlns:image="http://www.google.com/schemas/sitemap-image/1.1" xmlns:xhtml="http://www.w3.org/1999/xhtml">
   <url>
-    <loc>http://spectacle.gatineauottawa.com/index.html</loc>
-    <lastmod>2017-04-08</lastmod>
+    <loc>http://index.com/index.html</loc>
+    <lastmod>2017-04-16</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.5</priority>
     <image:image>
-      <image:loc>http://spectacle.gatineauottawa.com/images/canada-day-fireworks-ottawa-river-crop-u961.jpg</image:loc>
+      <image:loc>http://index.com/images/canada-day-fireworks-ottawa-river-crop-u961.jpg</image:loc>
     </image:image>
     <image:image>
-      <image:loc>http://spectacle.gatineauottawa.com/images/pantone_2017.jpg</image:loc>
+      <image:loc>http://index.com/images/ottawahomelessperiod-socialsquare-crop-u1049.jpg</image:loc>
+    </image:image>
+    <image:image>
+      <image:loc>http://index.com/images/ncrcfe-croatoan-2017-fb-header-crop-u1141.jpg</image:loc>
+    </image:image>
+    <image:image>
+      <image:loc>http://index.com/images/simple-plan-fb-header-crop-u1217.jpg</image:loc>
+    </image:image>
+    <image:image>
+      <image:loc>http://index.com/images/practical-nursing-pinning-fb-header-crop-u1319.jpg</image:loc>
+    </image:image>
+    <image:image>
+      <image:loc>http://index.com/images/02-magicmen-fbcover-crop-u1287-crop-u1573.jpg</image:loc>
+    </image:image>
+  </url>
+  <url>
+    <loc>http://index.com/event.html</loc>
+    <lastmod>2017-04-16</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.5</priority>
+    <image:image>
+      <image:loc>http://index.com/images/canada-day-fireworks-ottawa-river-crop-u961-crop-u1386.jpg</image:loc>
+    </image:image>
+    <image:image>
+      <image:loc>http://index.com/images/ottawahomelessperiod-socialsquare-crop-u1049.jpg</image:loc>
+    </image:image>
+    <image:image>
+      <image:loc>http://index.com/images/ncrcfe-croatoan-2017-fb-header-crop-u1141.jpg</image:loc>
+    </image:image>
+    <image:image>
+      <image:loc>http://index.com/images/simple-plan-fb-header-crop-u1217.jpg</image:loc>
+    </image:image>
+    <image:image>
+      <image:loc>http://index.com/images/02-magicmen-fbcover-crop-u1287-crop-u1410.jpg</image:loc>
+    </image:image>
+    <image:image>
+      <image:loc>http://index.com/images/practical-nursing-pinning-fb-header-crop-u1319.jpg</image:loc>
     </image:image>
   </url>
 </urlset>
