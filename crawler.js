@@ -12,29 +12,36 @@ var app = express();
 */
 
 //J'ai juste chercher toutes les balises qui sont des schemas
-var SCHEMA = 'script[type="application/ld+json"]';
+var SCHEMA = "script[type='application/ld+json']";
 var SEARCH_WORD = "Event";
-var MAX_PAGES_TO_VISIT = 5;
+var MAX_PAGES_TO_VISIT = 25;
 var SITELIST = [
-  //"http://www.algonquinsa.com/event",
-  "http://www.ottawa2017.ca/events",
-  "https://nac-cna.ca/en/event",
-  "https://www.tdplace.ca/event"
+  "http://www.algonquinsa.com/event",
+  //"http://www.ottawa2017.ca/events",
+  //"https://nac-cna.ca/en/event",
+  //"https://www.tdplace.ca/event",
+      "http://www.warmuseum.ca/exhibitions",
+  //"https://www.ticketmaster.ca",
+  "http://www.bandsintown.com",
+  "http://www.electrostub.com/events",
+  "http://www.historymuseum.ca/exhibitions"
+
 ];
+var START_URL;
 var found = 0;
 var pagesVisited = {};
 var json = {"event": []};
 var pagesToVisit = [];
-//var url;
-//var baseUrl;
+var url;
+var baseUrl;
 
 var prepareUrl = function(){
-  pagesToVisit = [];
   START_URL = SITELIST.shift();
   pagesToVisit.push(START_URL);
+  console.log("START_URL = " + START_URL);
   numPagesVisited = 0;
-  //url = new URL(START_URL);
-  //baseUrl = url.protocol + "//" + url.hostname;
+  url = new URL(START_URL);
+  baseUrl = url.protocol + "//" + url.hostname;
 }
 prepareUrl();
 crawl();
@@ -50,7 +57,8 @@ function crawl() {
     return;
   }
   }
-  var nextPage = pagesToVisit.pop();
+  var nextPage = pagesToVisit.shift();
+
   if (nextPage in pagesVisited) {
     // We've already visited this page, so repeat the crawl
     crawl();
@@ -63,7 +71,8 @@ function crawl() {
 function visitPage(url, callback) {
 
   if (url === undefined){
-    console.log("url undefined")
+    console.log("url is undefined");
+    numPagesVisited++;
     callback();
     return;
   }
@@ -85,24 +94,21 @@ function visitPage(url, callback) {
      // Parse the document body
      var $ = cheerio.load(body);
 
-     var isWordFound;
-     if(searchForWord($, SEARCH_WORD) && searchForSchema($, SCHEMA))
-      isWordFound = true;
-      else {
-        isWordFound = false;
-      }
+     var isWordFound = searchForWord($, SEARCH_WORD);
+     var isSchemaFound = searchForSchema($, SCHEMA);
 
-     if(isWordFound) {
-       console.log('Word ' + SEARCH_WORD + ' found at page ' + url);
+     if(isSchemaFound) {
+
+       console.log('Schema ' + SCHEMA + ' found at page ' + url);
        console.log('Found count: ' + found);
        //console.log($(SEARCH_WORD).text());
-
-       try {
-       var jsontemp = JSON.parse($(SCHEMA).text());
 
        function isArray(ob) {
          return ob.constructor === Array;
        }
+
+       try {
+       var jsontemp = JSON.parse($(SCHEMA).text());
 
        //Vérifier si l'élement DOM est un schema de type "Event"
        if (isArray(jsontemp)){
@@ -113,7 +119,6 @@ function visitPage(url, callback) {
            console.log("not event");
          }
        } else if(jsontemp["@type"] == "Event"){
-
            json.event.push(jsontemp);
        } else {
            console.log("non-compatible");
@@ -121,15 +126,17 @@ function visitPage(url, callback) {
        } catch(err){
          console.log(err);
        }
-       collectInternalLinks($);
-       callback();
-     } else {
-       collectInternalLinks($);
-       // In this short program, our callback is just calling crawl()
-       callback();
      }
+
+     if(isWordFound){
+       console.log("Word "+ SEARCH_WORD + " found")
+     }
+     collectInternalLinks($);
+     // In this short program, our callback is just calling crawl()
+     callback();
   });
 }
+
 
 function searchForWord($, word) {
   var bodyText = $('html > body').text().toLowerCase();
